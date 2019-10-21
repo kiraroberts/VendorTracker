@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace VendorTracker.Models
 {
-    public class VendorTracker
+    public class Vendor
     {
         private static List<Vendor> _instances = new List<Vendor> { };
         public string VendorName { get; set; }

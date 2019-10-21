@@ -5,7 +5,7 @@ using VendorTracker.Models;
 
 namespace VendorTracker.Controllers
 {
-    public class VendorTrackerController : Controller
+    public class VendorsController : Controller
     {
         [HttpGet("/vendors")]
         public ActionResult Index()
@@ -14,10 +14,16 @@ namespace VendorTracker.Controllers
         Vendor.GetAll();
             return View(allVendors);
         }
-        [HttpGet("vendors/new")]
+        [HttpGet("/vendors/new")]
         public ActionResult New()
         {
             return View();
+        }
+        [HttpPost("/vendors")]
+        public ActionResult Create (string vendorName)
+        {
+            Vendor newVendor = new Vendor(vendorName);
+            return RedirectToAction("Index");
         }
         [HttpPost("vendors/{vendorId}/orders")]
         public ActionResult Create(int vendorId, string orderDescription)
